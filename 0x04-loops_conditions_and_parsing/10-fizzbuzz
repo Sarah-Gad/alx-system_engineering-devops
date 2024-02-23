@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
-#This script displays numbers from 1 to 100.
-for ((num=1; num <= 100; num++)); do
-	if [ $((num%3)) -eq 0 ] && [ $((num%5)) -eq 0 ]; then
-		echo "FizzBuzz"
-	fi
-	if [ $((num%3)) -eq 0 ]; then
-		echo "Fizz"
-	fi
-	if [ $((num%5)) -eq 0 ]; then
-		echo "Buzz"
-	else
-		echo $num
-	fi
+# Displays numbers from 1 to 100 in list format.
+
+for num in {1..100}; do
+  if (( num % 3 == 0 && num % 5 == 0 )); then
+    echo "FizzBuzz"
+  elif (( num % 3 == 0 ));then
+    echo "Fizz"
+  elif (( num % 5 == 0 )); then
+    echo "Buzz"
+  else
+    echo "$num"
+  fi
 done
