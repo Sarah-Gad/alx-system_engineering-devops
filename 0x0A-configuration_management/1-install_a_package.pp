@@ -1,4 +1,10 @@
-# This manifest will install flask using pip3
+# This manifest will install Flask and Werkzeug using pip3
+package { 'werkzeug':
+  ensure   => '2.1.0',
+  name     => 'Werkzeug',
+  provider => 'pip3',
+}
+
 package { 'flask':
   ensure   => '2.1.0',
   name     => 'flask',
