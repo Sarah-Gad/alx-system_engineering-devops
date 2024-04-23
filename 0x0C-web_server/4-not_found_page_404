@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script adds another directive in the nginx
+sudo apt-get update
+sudo apt-get install nginx -y
+echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo sed -i '24i\       rewrite ^/redirect_me https://www.google.com/ permanent;' /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" >> /var/www/html/error_404.html
+sudo sed -i '25i\	error_page 404 /error_404.html;' /etc/nginx/sites-available/default
+sudo service nginx start
