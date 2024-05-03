@@ -40,8 +40,8 @@ frontend sarah-gad-tech-frontend
 
 backend sarah-gad-tech-backend
     balance roundrobin
-    server 531023-web-01 54.144.130.49 check
-    server 531023-web-02 100.26.164.173 check
+    server 531023-web-01 54.144.130.49:80 check
+    server 531023-web-02 100.26.164.173:80 check
 "
 
 # shellcheck disable=SC2154
