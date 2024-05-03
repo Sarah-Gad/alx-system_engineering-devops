@@ -34,11 +34,11 @@ defaults
   timeout server 15s
   timeout http-request 10s
 
-frontend salmagad-tech-frontend
+frontend sarah-gad-tech-frontend
     bind *:80
-    default_backend salmagad-tech-backend
+    default_backend sarah-gad-tech-backend
 
-backend salmagad-tech-backend
+backend sarah-gad-tech-backend
     balance roundrobin
     server 531023-web-01 54.144.130.49 check
     server 531023-web-02 100.26.164.173 check
