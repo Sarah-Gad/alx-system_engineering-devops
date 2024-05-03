@@ -40,8 +40,8 @@ frontend salmagad-tech-frontend
 
 backend salmagad-tech-backend
     balance roundrobin
-    server 374749-web-01 54.236.231.234:80 check
-    server 374749-web-02 34.229.137.215:80 check
+    server 531023-web-01 54.144.130.49 check
+    server 531023-web-02 100.26.164.173 check
 "
 
 # shellcheck disable=SC2154
