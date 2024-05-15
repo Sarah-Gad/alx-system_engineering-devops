@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script runs whoamis as aother user that will be given as an argument
+sudo -u "$1" whoami
