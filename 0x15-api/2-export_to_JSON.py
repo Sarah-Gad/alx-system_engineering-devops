@@ -4,13 +4,15 @@ import json
 import requests
 import sys
 if __name__ == "__main__":
-    rooturl = "https://jsonplaceholder.typicode.com/"
-    req_user = requests.get(rooturl + "users/{}".format(sys.argv[1])).json()
-    usertodo = requests.get(
-        rooturl + "todos", params={"userId": sys.argv[1]}).json()
-    with open("{}.json".format(sys.argv[1]), "w") as myjson:
-        json.dump({sys.argv[1]: [{
-            "task": onet.get("title"),
-            "completed": onet.get("completed"),
-            "username": req_user.get("name")
-        } for onet in usertodo]}, myjson)
+    user_id = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(url + "users/{}".format(user_id)).json()
+    username = user.get("username")
+    todos = requests.get(url + "todos", params={"userId": user_id}).json()
+
+    with open("{}.json".format(user_id), "w") as jsonfile:
+        json.dump({user_id: [{
+                "task": t.get("title"),
+                "completed": t.get("completed"),
+                "username": username
+            } for t in todos]}, jsonfile)
