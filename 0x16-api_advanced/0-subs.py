@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """This module contains a functiion that will query Reddit API"""
+
 import requests
 
 
@@ -15,4 +16,4 @@ def number_of_subscribers(subreddit):
         allow_redirects=False)
     if respo.status_code == 404:
         return 0
-    return respo.json().get("data").get("subscribers")
+    return respo.json().get("data", {}).get("subscribers", 0)
