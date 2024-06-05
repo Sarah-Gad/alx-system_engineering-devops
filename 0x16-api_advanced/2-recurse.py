@@ -13,7 +13,8 @@ def recurse(subreddit, hot_list=[], after="", number=0):
     }
     rd_params = {
         "after": after,
-        "number": number
+        "number": number,
+        "limit": 100
     }
     respo = requests.get(
         rd_endpoint,
