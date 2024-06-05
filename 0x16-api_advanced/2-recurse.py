@@ -7,27 +7,26 @@ import requests
 def recurse(subreddit, hot_list=[], after="", number=0):
     """This fucntion will returns a list containing the titles
     of all hot articles using recursive function"""
-    rd_endpoint = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    rd_headers = {
-        "User-Agent": "windows, for 0x16-api_advanced project by Sarah-Gad "
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    headers = {
+        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
     }
-    rd_params = {
+    params = {
         "after": after,
-        "number": number,
+        "count": count,
         "limit": 100
     }
-    respo = requests.get(
-        rd_endpoint,
-        headers=rd_headers,
-        params=rd_params,
-        allow_redirects=False)
-    if respo.status_code == 404:
+    response = requests.get(url, headers=headers, params=params,
+                            allow_redirects=False)
+    if response.status_code == 404:
         return None
-    parsed_repos = respo.json().get("data")
-    after = parsed_repos.get("after")
-    number += parsed_repos.get("dist")
-    for one in parsed_repos.get("children"):
-        hot_list.append(one.get("data").get("title"))
+
+    results = response.json().get("data")
+    after = results.get("after")
+    count += results.get("dist")
+    for c in results.get("children"):
+        hot_list.append(c.get("data").get("title"))
+
     if after is not None:
-        return recurse(subreddit, hot_list, after, number)
+        return recurse(subreddit, hot_list, after, count)
     return hot_list
