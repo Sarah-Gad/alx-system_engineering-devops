@@ -27,7 +27,7 @@ def recurse(subreddit, hot_list=[], after="", number=0):
     after = parsed_repos.get("after")
     number += parsed_repos.get("dist")
     for one in parsed_repos.get("children"):
-        list_of_titles.append(one.get("data").get("tilte"))
+        list_of_titles.append(one.get("data").get("title"))
     if after is not None:
-        recurse(subreddit, hot_list, after, number)
+        return recurse(subreddit, hot_list, after, number)
     return list_of_titles
