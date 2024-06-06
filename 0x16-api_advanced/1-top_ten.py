@@ -6,7 +6,7 @@ import requests
 
 def top_ten(subreddit):
     """This fucntion will print the titles of the first hot posts"""
-    rd_endpoint = "https://www.reddit.com/r/{}//hot.json".format(subreddit)
+    rd_endpoint = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     rd_headers = {
         "User-Agent": "windows, for 0x16-api_advanced project by Sarah-Gad "
     }
