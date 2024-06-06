@@ -8,5 +8,5 @@ exec { 'install_puppet_lint':
   require => Package['ruby']}
 
 exec {'editing text file':
-  command => 'sed -i "s/.phpp/.php/g" /var/www/html/wp-settings.php',
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
   path    => '/usr/local/bin/:/bin/'}
